@@ -1,0 +1,52 @@
+﻿<Window x:Class="ADGroupsTester.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ADGroupsTester"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" SizeToContent="WidthAndHeight">
+    <Grid Margin="10">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label>Context type:</Label>
+                <RadioButton VerticalAlignment="Center" GroupName="ContextTipe" Name="DomainContext" IsChecked="True" Margin="10,0,0,0">Domain</RadioButton>
+                <RadioButton VerticalAlignment="Center" GroupName="ContextTipe" Name="LocalContext" IsChecked="False" Margin="10,0,0,0">Local</RadioButton>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label>Context type:</Label>
+                <RadioButton VerticalAlignment="Center" GroupName="UserType" Name="CurrentUser" IsChecked="True" Margin="10,0,0,0">Current</RadioButton>
+                <RadioButton VerticalAlignment="Center" GroupName="UserType" Name="EnterUser" IsChecked="False" Margin="10,0,0,0">Other</RadioButton>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="63">Username</Label>
+                <TextBox Name="UserName" VerticalAlignment="Center" Width="97" IsEnabled="{Binding ElementName=EnterUser, Path=IsChecked}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="63">Password</Label>
+                <PasswordBox Name="Password" VerticalAlignment="Center" Width="97" IsEnabled="{Binding ElementName=EnterUser, Path=IsChecked}"></PasswordBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="63">Domain</Label>
+                <TextBlock Name="DomainName" VerticalAlignment="Center"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="63" RenderTransformOrigin="0.5,0.5">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleY="0.224"/>
+                            <RotateTransform/>
+                            <TranslateTransform Y="0.121"/>
+                        </TransformGroup>
+                    </Label.RenderTransform> Server
+                </Label>
+                <TextBlock Name="Server" VerticalAlignment="Center"></TextBlock>
+            </StackPanel>
+            
+            <Button Name="startButton" Click="StartButton_OnClickButton_Click">Start reading</Button>
+
+            <ListBox x:Name="elements"></ListBox>
+        </StackPanel>
+    </Grid>
+</Window>
