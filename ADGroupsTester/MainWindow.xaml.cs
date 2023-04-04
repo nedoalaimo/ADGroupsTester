@@ -23,8 +23,8 @@ namespace ADGroupsTester
         private async void StartButton_OnClickButton_Click(object sender, RoutedEventArgs e)
         {
             // Get the username and password from the input fields or use the current user's information.
-            string userName = (bool)EnterUser.IsChecked ? UserName.Text : Environment.UserName;
-            string password = (bool)EnterUser.IsChecked ? Password.Password : "";
+            var userName = (bool)EnterUser.IsChecked ? UserName.Text : Environment.UserName;
+            var password = (bool)EnterUser.IsChecked ? Password.Password : "";
 
             // Check if the user has entered a username and password, or if the "CurrentUser" checkbox is checked.
             if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password) && !(bool)CurrentUser.IsChecked)
@@ -34,13 +34,13 @@ namespace ADGroupsTester
             }
 
             // Create a PrincipalContext for either the Domain or the local Machine, depending on the user's choice.
-            PrincipalContext principalContext = GetPrincipalContext();
+            var principalContext = GetPrincipalContext();
 
             // Initialize an ActiveDirectoryProvider to interact with Active Directory.
             IActiveDirectoryProvider adProvider = new ActiveDirectoryProvider(principalContext);
 
             // Check if the "CurrentUser" checkbox is checked, or validate the entered user credentials.
-            bool isAuthenticated = IsUserAuthenticated(adProvider, userName, password);
+            var isAuthenticated = IsUserAuthenticated(adProvider, userName, password);
 
             if (!isAuthenticated)
             {
