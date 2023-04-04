@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ADGroupsTester"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" SizeToContent="WidthAndHeight">
+        Title="MainWindow" Height="800" Width="600" ResizeMode="CanMinimize">
     <Grid Margin="10">
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
@@ -42,11 +42,15 @@
                     </Label.RenderTransform> Server
                 </Label>
                 <TextBlock Name="Server" VerticalAlignment="Center"></TextBlock>
+                
             </StackPanel>
             
             <Button Name="startButton" Click="StartButton_OnClickButton_Click">Start reading</Button>
 
-            <ListBox x:Name="elements"></ListBox>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Name="workingLabel" Visibility="Collapsed" HorizontalAlignment="Center" Margin="5" FontSize="15" FontWeight="Bold" Foreground="Red">Loading user informations... Please wait</TextBlock>
+                <ListBox x:Name="elements"></ListBox>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>
